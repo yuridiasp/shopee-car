@@ -5,6 +5,6 @@ async function createItem(name, price, quantity) {
         quantity,
         subtotal: () => price * quantity,
     }
-}
+};
 
-export { createItem }
+export { createItem };

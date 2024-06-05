@@ -1,47 +1,100 @@
-<!--START_SECTION:header-->
-<div align="center">
-  <p align="center">
-    <h1>Recriando a lógica do carrinho de compras da Shopee</h1>
-  </p>
-</div>
-<!--END_SECTION:header-->
+# Desafio de Projeto: Shopee-CAR
 
 [Repositório Original](https://github.com/digitalinnovationone/formacao-nodejs/tree/main/06-shopee-cart)
 
-## 💻 Descrição Do Projeto
+Este é um projeto simples de um carrinho de compras utilizando JavaScript. Ele simula um carrinho de compras online, permitindo adicionar, remover e exibir itens, além de calcular o total do carrinho.
 
-Vamos criar a lógica por trás do carrinho de compras da shopee, aonde o carrinho armazene itens e faça o cálculo total e de sub-itens automaticamente.
+## Estrutura do Projeto
 
-## 📚 Pré-requisitos de Habilidades e Níveis de Conhecimento
+- `src/`
+  - `services/`
+    - `cart.js` - Módulo contendo as funcionalidades do carrinho.
+    - `item.js` - Módulo para criação de itens.
+  - `index.js` - Script principal que utiliza os módulos de carrinho e item.
 
-Antes de ingressar neste conteúdo, é necessário possuir conhecimento prévio nas seguintes áreas:
+- `.gitignore` - Arquivo para especificar quais arquivos/devem ser ignorados pelo Git.
+- `arquitetura.png` - Imagem que descreve a arquitetura do projeto.
+- `LICENSE` - Arquivo de licença do projeto.
+- `package.json` - Arquivo de configuração do npm.
+- `README.md` - Este arquivo.
 
-- [habilidades ou conhecimentos prévios necessários]
+## Requisitos
 
-  - Javascript | Intermediário
-  - Node | Básico
-  - Modularização | Básica
+- Node.js instalado
 
-- [Outros pré-requisitos]
+## Como executar o projeto
 
-  - Lógica de Programação | Intermediário
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/yuridiasp/shopee-car.git
+   cd shopee-car
+   ```
 
-## 🛠️ Habilidades e Sub-habilidades que vamos aprender neste conteúdo
+2. Instale as dependências:
+   ```sh
+   npm install
+   ```
 
-- Modularização | Intermediária
+3. Execute o script principal:
+   ```sh
+   node src/index.js
+   ```
 
-## 🎯 Objetivos e Resultados Esperados
+## Descrição dos Arquivos
 
-Após a conclusão do curso/projeto, os estudantes estarão aptos a:
+### `index.js`
 
-- Modularizar projetos com maior propriedade
-- Como organizar pensamento lógico e funcional
-- Base para organizar projetos
+Este arquivo é o ponto de entrada do projeto. Ele importa os serviços do carrinho e do item e realiza as seguintes ações:
 
-<!--START_SECTION:footer-->
+- Cria um carrinho vazio.
+- Adiciona itens ao carrinho.
+- Exibe o conteúdo do carrinho.
+- Calcula o total do carrinho.
 
-<br />
-<br />
+### `services/cart.js`
+
+Este módulo contém as funções relacionadas ao carrinho de compras:
+
+- `addItem` - Adiciona um item ao carrinho.
+- `deleteItem` - Remove um item do carrinho.
+- `removeItemByIndex` - Remove um item do carrinho pelo índice.
+- `removeItem` - Remove uma unidade de um item ou o item completo se a quantidade for 1.
+- `calculateTotal` - Calcula o total do carrinho.
+- `displayCart` - Exibe o conteúdo do carrinho.
+
+### `services/item.js`
+
+Este módulo contém a função para criar itens:
+
+- `createItem` - Cria um item com nome, preço e quantidade.
+
+## Exemplo de Uso
+
+Aqui está um exemplo de como utilizar o projeto:
+
+```javascript
+import cartService from "./services/cart.js";
+import { createItem } from "./services/item.js";
+
+const cart = [];
+
+console.log("🛒 Bem-vindo ao seu Shopee Cart! 🛒\n");
+
+const item1 = await createItem("Hotwheels Ferrari", 20.99, 1);
+await cartService.addItem(cart, item1);
+
+const item2 = await createItem("Hotwheels Lamborghini", 39.99, 3);
+await cartService.addItem(cart, item2);
+
+cartService.displayCart(cart);
+
+cartService.calculateTotal(cart);
+```
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
 
 <h2 id="author">Desenvolvedor</h2>
 
